@@ -1,0 +1,18 @@
+#!/bin/bash
+
+OUTFILE="../states/aka.json"
+INFILE="/var/www/akadns/out.hosts"
+
+DATE=$(date)
+STATE="failed"
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" localhost/akadns/)
+
+if [ "$STATUS" != "200" ]; then
+	INFO="HTTPd answers with $STATUS"
+else
+	NUM=$(cat $INFILE | cut -d " " -f 2- | wc -w)
+	INFO="$NUM aliases configured"
+	STATE="okay"
+fi
+
+printf '{"state":"%s","last":"%s","info":"%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"

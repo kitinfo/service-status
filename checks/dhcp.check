@@ -1,17 +1,15 @@
 #!/bin/bash
 
-OUTFILE="../states/dns.json"
+OUTFILE="../states/dhcp.json"
 
 DATE=$(date)
 STATE="failed"
-host -W 1 kitinfo.de localhost > /dev/null 2>&1
-if [ "$?" == "0" ]; then
-	STATE="okay"
-	INFO="Resolution seems to work"
-fi
 
 if [ "$(pidof dnsmasq)" == "" ]; then
 	INFO="dnsmasq seems to be down"
+else
+	INFO=$(printf "%s IP adresses currently leased" "`cat /var/lib/misc/dnsmasq.leases | wc -l`")
+	STATE="okay"
 fi
 
 printf '{"state":"%s","last":"%s","info":"%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"

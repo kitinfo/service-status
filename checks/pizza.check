@@ -18,10 +18,10 @@ then
 	#CITY=$(get_json "$DATA" 'city')
 	#COUNTRY=$(get_json "$DATA" 'country')
 	STATE="okay"
-	INFO="VPN is up with public address $IP" # ($CITY, $COUNTRY)"
+	INFO="VPN is running. IP is $IP" # ($CITY, $COUNTRY)"
 else
 	STATE="failed"
 	INFO="VPN is not running"
 fi
 
-printf '{"state":"%s","last":"%s","info":"%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"
+#printf '{"state":"%s","last":"%s","info":"%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"

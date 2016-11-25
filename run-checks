@@ -1,5 +1,6 @@
 #!/bin/bash
-cd checks
+PWD=$(pwd)
+cd "$PWD/checks"
 for check in *.check; do
 	./$check &
 done

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#set -x
+
+OUTFILE="../states/nat.json"
+
+DATE=$(date)
+STATE="okay"
+
+if [ "$(cat /proc/sys/net/ipv4/ip_forward)" == "0" ]; then
+	INFO="Traffic not forwarded yet"
+	STATE="failed"
+fi
+
+if [ "$(/sbin/iptables -L POSTROUTING -t nat | grep SNAT | wc -l)" == "0" ]; then
+	INFO="No NAT rule configured yet"
+	STATE="failed"
+fi
+
+if [ "$STATE" == "okay" ]; then
+	INFO=$(printf "%s bytes of traffic forwarded" "`/sbin/iptables -L POSTROUTING -t nat -v | tail -n 1 | cut -d " " -f 4`")
+	STATE="okay"
+fi
+
+printf '{"state":"%s","last":"%s","info":"%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"
