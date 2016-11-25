@@ -1,6 +1,7 @@
 #!/bin/bash
-for check in checks/*.check; do
-	$check &
+cd checks
+for check in *.check; do
+	./$check &
 done
 
 wait
