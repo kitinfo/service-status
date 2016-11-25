@@ -1,0 +1,6 @@
+#!/bin/bash
+for check in checks/*.check; do
+	$check &
+done
+
+wait
