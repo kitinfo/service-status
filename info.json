@@ -1,7 +1,37 @@
 [
 {
-	"name":"DHCP",
+	"name":"Server",
+	"info":"Der #kitinfo-Server",
+	"file":"states/server.json"
+},
+{
+	"name":"DNS",
 	"info":"Aufloesung von Hostnamen",
+	"file":"states/dns.json"
+},
+{
+	"name":"DHCP",
+	"info":"Verteilung von IP-Adressen",
 	"file":"states/dhcp.json"
+},
+{
+	"name":"akadns",
+	"info":"Lieblingsspielzeug aller Teilnehmer",
+	"file":"states/aka.json"
+},
+{
+	"name":"VPN",
+	"info":"Verbindung nach aussen",
+	"file":"states/vpn.json"
+},
+{
+	"name":"NAT",
+	"info":"Internet fuer internes Netz",
+	"file":"states/nat.json"
+},
+{
+	"name":"Pizzaplaner",
+	"info":"Essensverteilung",
+	"file":"states/pizza.json"
 }
 ]
