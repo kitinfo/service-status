@@ -1,0 +1,27 @@
+#!/bin/bash
+
+OUTFILE="../states/vpn.json"
+
+DATE=$(date)
+
+function get_json {
+	ANS=$(echo "$1" | python3 -c "import sys, json; print(json.load(sys.stdin)['$2'])")
+	echo "$ANS"
+}
+
+ip link show tun0 2>1 1> /dev/null
+if [[ $? -eq 0 ]]
+then
+
+	DATA=$(curl -s ipinfo.io)
+	IP=$(get_json "$DATA" 'ip')
+	CITY=$(get_json "$DATA" 'city')
+	COUNTRY=$(get_json "$DATA" 'country')
+	STATE="okay"
+	INFO="VPN is running. IP is $IP ($CITY, $COUNTRY)"
+else
+	STATE="failed"
+	INFO="VPN is not running"
+fi
+
+printf '{"state":"%s","last":"%s","info","%s"}' "$STATE" "$DATE" "$INFO" > "$OUTFILE"
