@@ -15,9 +15,9 @@ var services = {
 		this.node.getElementsByClassName("service-image")[0].src = "static/reported.svg";
 
 		document.getElementById("center-box").appendChild(this.node);
-		_self = this;
 
 		this.fetch = function(){
+			var _self = this;
 			ajax.asyncGet(this.file, function(request){
 				if(request.status != 200){
 					_self.node.getElementsByClassName("service-info")[0].textContent = "Failed to fetch";

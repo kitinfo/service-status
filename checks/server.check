@@ -1,0 +1,8 @@
+#!env bash
+
+OUTFILE="../states/server.json"
+
+DATE=$(date)
+UPTIME=$(uptime)
+
+printf '{"state":"okay","last":"%s","info":"%s"}' "$DATE" "$UPTIME" > "$OUTFILE"
