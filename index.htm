@@ -6,12 +6,16 @@
 		<link rel="icon" href="static/favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="static/status.css" />
+		<script type="text/javascript" src="static/ajax.js"></script>
+		<script type="text/javascript" src="static/status.js"></script>
 		<meta name="description" content="Track current status information and report problems." />
 		<meta name="robots" content="noindex,nofollow" />
 	</head>
-	<body>
+	<body onload="services.init();">
 		<div id="center-wrap">
 			<div id="center-box">
+				<h1>Status Overview</h1>
+				<!--
 				<div class="service">
 					<img src="static/failed.svg" class="service-image" />
 					<div class="service-text">
@@ -30,24 +34,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="service">
-					<img src="static/okay.svg" class="service-image" />
-					<div class="service-text">
-						<div class="service-meta">
-							<h1>aka dns</h1>
-							Lustige Aliases, auch fuer deinen Computer.
-						</div>
-						<div class="service-info">
-							Letzter Status: geht<br/>
-							Letzter Check: datetime<br/>
-							Letzte Statusaenderung: datetime<br/>
-							Probleme gemeldet seitdem: 123 (Acknowledged)
-						</div>
-						<div class="service-buttons">
-							<a class="button" href="#">Ist kaputt</a>
-						</div>
-					</div>
-				</div>
+				//-->
 			</div>
 		</div>
 	</body>

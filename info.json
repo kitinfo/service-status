@@ -1,0 +1,7 @@
+[
+{
+	"name":"DHCP",
+	"info":"Aufloesung von Hostnamen",
+	"file":"states/dhcp.json"
+}
+]
